@@ -1,5 +1,5 @@
 "# TagService" 
-This Service tags the unstrutured free text. Currently in works only for English.
+Tag Service tags the unstrutured free text. Currently in works only for English.
 The service extracts the noun entities and scraps the entities on the google.
 It detects and returns-
 1.  Language
