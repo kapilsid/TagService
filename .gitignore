@@ -1,1 +1,3 @@
 bbc-corpus/
+*.pyc
+*/*.pyc
