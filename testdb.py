@@ -20,6 +20,6 @@ result = query.selectAllDict()
 for row in result:
     print(row)
 
-query.resetAll()    
+# query.resetAll()    
 
 

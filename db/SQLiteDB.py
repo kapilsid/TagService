@@ -58,6 +58,8 @@ class SQLiteDB:
             return l
 
 
-    # def __del__(self):
-    #     self.conn.close()
-    #     self.cursor.close()
+    def __del__(self):
+        self.cursor.close()
+        self.conn.close()
+        
+        
