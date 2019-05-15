@@ -17,32 +17,32 @@ grammar = r"""
   """
 
 def NEtag(mtext):
-  """Extracts Name Entities    
-    Args:
-        mText: text
+    """Extracts Name Entities    
+        Args:
+            mText: text
 
-    Returns:
-        list of name entities    
+        Returns:
+            list of name entities    
 
-   """ 
+    """ 
 
-   sents = sent_tokenize(mtext)
-   tags = []
-   for sent in sents:
-      tokens = word_tokenize(sent)
-      str = nltk.pos_tag(tokens)
-      #chk = nltk.ne_chunk(str)
-      cp = nltk.RegexpParser(grammar)
-      chk = cp.parse(str)
+    sents = sent_tokenize(mtext)
+    tags = []
+    for sent in sents:
+        tokens = word_tokenize(sent)
+        str = nltk.pos_tag(tokens)
+        #chk = nltk.ne_chunk(str)
+        cp = nltk.RegexpParser(grammar)
+        chk = cp.parse(str)
 
-      #print(chk)
-      NN = []
-      for subtree in chk.subtrees(filter=lambda t: t.label() == 
-      'NP'):
-           NN.append(subtree)  
-      #tags.append(chk)
-      #chk = chunk(str)
-   return NN
+        #print(chk)
+        NN = []
+        for subtree in chk.subtrees(filter=lambda t: t.label() == 
+        'NP'):
+            NN.append(subtree)  
+        #tags.append(chk)
+        #chk = chunk(str)
+    return NN
 
 
 def NPtag(str):
@@ -53,7 +53,7 @@ def NPtag(str):
     Returns:
         list of noun phrases    
 
-   """ 
+    """ 
     cp = nltk.RegexpParser(grammar)
     chk = cp.parse(str)
     NN = []
@@ -76,43 +76,43 @@ def postag(mtext):
         snetis: snetiments of each sentence
         ner: noun pharses 
 
-   """ 
-   sents = sent_tokenize(mtext)
-   tags = []
-   for sent in sents:
-      tokens = word_tokenize(sent)
-      str = nltk.pos_tag(tokens)
-      chk = NPtag(str)
-      sentis = xtractSentin(sent)
-      ner = xtractSpacyNE(sent)
-      #print(ner)
-      tag = json.dumps({"tag":str,"ne":chk,"sent":sent,"sentis":sentis,"ner":ner})
-      #entities = nltk.chunk.ne_chunk(str)
-      tags.append(tag)
-      #chk = chunk(str)
-   return tags
+     """ 
+    sents = sent_tokenize(mtext)
+    tags = []
+    for sent in sents:
+        tokens = word_tokenize(sent)
+        str = nltk.pos_tag(tokens)
+        chk = NPtag(str)
+        sentis = xtractSentin(sent)
+        ner = xtractSpacyNE(sent)
+        #print(ner)
+        tag = json.dumps({"tag":str,"ne":chk,"sent":sent,"sentis":sentis,"ner":ner})
+        #entities = nltk.chunk.ne_chunk(str)
+        tags.append(tag)
+        #chk = chunk(str)
+    return tags
 
 def postagXML(mtext):
-   """Analyzes text sentence by sentence
-        
-    Args:
-        mText: text
+    """Analyzes text sentence by sentence
+            
+        Args:
+            mText: text
 
-    Returns:
-        xml format 
-     
-   """  
-   sents = sent_tokenize(mtext)
-   tags = []
-   for sent in sents:
-      tokens = word_tokenize(sent)
-      str = nltk.pos_tag(tokens)
-      #tags.append(chunk(str))
-      xml = toXML(str)
-      chk = chunk(str)
-      tag = json.dumps({"xml": xml,"chunk":chk,"sent":sent})
-      tags.append(tag)
-   return tags
+        Returns:
+            xml format 
+        
+    """  
+    sents = sent_tokenize(mtext)
+    tags = []
+    for sent in sents:
+        tokens = word_tokenize(sent)
+        str = nltk.pos_tag(tokens)
+        #tags.append(chunk(str))
+        xml = toXML(str)
+        chk = chunk(str)
+        tag = json.dumps({"xml": xml,"chunk":chk,"sent":sent})
+        tags.append(tag)
+    return tags
 
 def chunk(tags):
     """Extract text from tags

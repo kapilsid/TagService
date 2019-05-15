@@ -14,14 +14,14 @@ from xtractknowledge import kpanel
 # print(doc.ents)
 
 def xtractSpacyNE(mtext):
-    """Extracts Name Entities from the text
-    Calls Kpanel for crawling the knowldge panel from google search.
+   """Extracts Name Entities from the text
+   Calls Kpanel for crawling the knowldge panel from google search.
 
-    Args:
-      mtext: text 
+   Args:
+   mtext: text 
 
-    Returns:
-      knowledge about entity   
+   Returns:
+   knowledge about entity   
 
    """    
    doc = nlp(mtext)
@@ -41,7 +41,7 @@ def xtractSpacyNE(mtext):
       return p
 
 def xtractSpacyNP(chunks):
-  """Extracts Name Phrases from the text
+   """Extracts Name Phrases from the text
     Calls Kpanel for crawling the knowldge panel from google search.
 
     Args:
@@ -63,4 +63,4 @@ def xtractSpacyNP(chunks):
       else:
           p.append((text,label)) 
 
-      return p
+   return p
