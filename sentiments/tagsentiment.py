@@ -6,6 +6,14 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 sid = SentimentIntensityAnalyzer()
 
 def getSentiments(mtext):
+    """Detects sentiment from the text.    
+    Args:
+        mtext: text
+
+    Returns:
+        sentiments for each sentence with polarity    
+
+    """ 
     sents = sent_tokenize(mtext)
     sentiments = []
     for sentence in sents:

@@ -17,6 +17,15 @@ grammar = r"""
   """
 
 def NEtag(mtext):
+  """Extracts Name Entities    
+    Args:
+        mText: text
+
+    Returns:
+        list of name entities    
+
+   """ 
+
    sents = sent_tokenize(mtext)
    tags = []
    for sent in sents:
@@ -37,6 +46,14 @@ def NEtag(mtext):
 
 
 def NPtag(str):
+    """Extracts Noun Phrases    
+    Args:
+        mText: text
+
+    Returns:
+        list of noun phrases    
+
+   """ 
     cp = nltk.RegexpParser(grammar)
     chk = cp.parse(str)
     NN = []
@@ -46,6 +63,20 @@ def NPtag(str):
     return NN
 
 def postag(mtext):
+    """Analyzes text sentence by sentence
+        
+    Args:
+        mText: text
+
+    Returns:
+        dictionary as json 
+        tag: tokens with their Part of Speech POS tags
+        ne: Name entities
+        sent: snetences
+        snetis: snetiments of each sentence
+        ner: noun pharses 
+
+   """ 
    sents = sent_tokenize(mtext)
    tags = []
    for sent in sents:
@@ -62,6 +93,15 @@ def postag(mtext):
    return tags
 
 def postagXML(mtext):
+   """Analyzes text sentence by sentence
+        
+    Args:
+        mText: text
+
+    Returns:
+        xml format 
+     
+   """  
    sents = sent_tokenize(mtext)
    tags = []
    for sent in sents:
@@ -75,12 +115,28 @@ def postagXML(mtext):
    return tags
 
 def chunk(tags):
+    """Extract text from tags
+        
+    Args:
+        tags: list of POS tags
+
+    Returns:
+        list of chunks based on the grammar
+    """ 
     cp = nltk.RegexpParser(grammar)
     #print(cp.parse(tags))
     y = cp.parse(tags)
     return(y) 
 
 def toXML(tags):
+    """Convert list from tags to xml format with tag type as node element
+        
+    Args:
+        tags: list of POS tags
+
+    Returns:
+        xml string
+    """ 
     li = []
     for tag in tags:
         word = tag[0]

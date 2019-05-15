@@ -6,6 +6,16 @@ from urllib.request import Request, urlopen
 
 
 def searchEntity(name):
+    """Searches the name entity in google search     
+    Extract the knowledge panel if present from Google Search Page
+
+    Args:
+        name: Name or entity to be search 
+
+    Returns:
+        Logo, Company Name, description, and other details   
+
+    """ 
     name = urllib.parse.quote_plus(name)
     url = "https://www.google.com/search?q={}&oq={}".format(name,name)
     #print(url)

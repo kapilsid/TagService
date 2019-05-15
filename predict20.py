@@ -17,6 +17,15 @@ filename = folder_name + 'twentytrain_target.sav'
 targets = pickle.load(open(filename, 'rb'))
 
 def predictClass(mtext):
+    """Predicts the class or topic of the text using tdif
+    term document inverse frequency
+    Args:
+      mtext: text 
+
+    Returns:
+      predicted class 
+
+    """ 
     Z_counts = count_vect.transform([mtext])
 
     Z_tfidf = tdif.transform(Z_counts)

@@ -16,6 +16,16 @@ grammar = r"""
   """
 
 def extractConj(sent):
+    """Breaks the sentence based on the specified grammar from 
+    NP:Noun Phrase, PP:Particple, VP:Verb.    
+    Args:
+        sent: sentence
+
+    Returns:
+        list of chunks    
+
+    """ 
+    
     Digdug = nltk.RegexpParser(r""" 
     CHUNK_AND_CHINK:
     {<.*>+}          # Chunk everything

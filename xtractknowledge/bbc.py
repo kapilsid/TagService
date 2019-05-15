@@ -3,7 +3,14 @@ import numpy as np
 from numpy import zeros
 
 def load_bbc(path="."):
+    """Loads bbc     
+    Args:
+        path: foldername for bbc files 
 
+    Returns:
+       list of vocab, articles, labels and keys   
+
+    """ 
     artPath = os.path.join(path, 'bbc.mtx')
     vocPath = os.path.join(path, 'bbc.terms')
     labPath = os.path.join(path, 'bbc.classes')

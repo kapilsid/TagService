@@ -15,6 +15,14 @@ classif.fit(X,y)
 
 
 def readFeatureFromFile(fpath) :
+    """Create features from the file.    
+    Args:
+        fpath: filename 
+
+    Returns:
+       dictionary of tokens with occurance    
+
+    """ 
     featureVector = np.zeros(len(vocab))
     newsArticle = open(fpath, 'r')
     for line in newsArticle:
@@ -25,6 +33,14 @@ def readFeatureFromFile(fpath) :
     return featureVector
 
 def extractFeatures(tokens):
+    """Create features from the token list.    
+    Args:
+        tokens: list 
+
+    Returns:
+       dictionary of tokens with occurance    
+
+    """ 
     featureVector = np.zeros(len(vocab))
     for word in tokens:
         if word in vocab:
@@ -32,6 +48,15 @@ def extractFeatures(tokens):
     return featureVector
 
 def xtractTokens(mtext):
+    """Extract tokens from tags which are significant len > 3 and 
+    not in stop_words.    
+    Args:
+        mtext: text
+
+    Returns:
+       list of tokens    
+
+    """ 
     sents = sent_tokenize(mtext)
     tags = []
     for sent in sents:
@@ -42,6 +67,14 @@ def xtractTokens(mtext):
     return tags
 
 def predictTopic(mText):
+    """Predict Topic from the text.    
+    Args:
+        mtext: text
+
+    Returns:
+        highest probable detected topic    
+
+    """ 
     tokens = xtractTokens(mText)
     print(tokens)
     featureVector = [extractFeatures(tokens)]
